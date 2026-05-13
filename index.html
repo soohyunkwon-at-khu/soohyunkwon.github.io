@@ -3,260 +3,557 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soohyun Kwon</title>
+  <title>Soohyun Kwon — Linguist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #f8f6f1;
+      --ink:     #181410;
+      --navy:    #14284d;
+      --gold:    #9a7b42;
+      --muted:   #6b6460;
+      --rule:    #e2ddd6;
+      --serif:   'Cormorant Garamond', Georgia, serif;
+      --sans:    'Jost', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.7;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      color: #222;
-      background-color: #fafafa;
+      font-family: var(--sans);
+      font-weight: 300;
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.5;
     }
 
-    h1, h2 {
-      color: #1a1a1a;
+    /* ── NAV ──────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 4rem;
+      background: rgba(248, 246, 241, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
     }
 
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.2em;
-    }
-
-    h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-      margin-top: 50px;
-    }
-
-    .subtitle {
-      font-size: 1.2rem;
-      color: #666;
-      margin-bottom: 30px;
-    }
-
-    .contact {
-      margin-bottom: 40px;
-    }
-
-    .section {
-      margin-bottom: 40px;
-    }
-
-    .item {
-      margin-bottom: 20px;
-    }
-
-    .year {
-      font-weight: bold;
-      color: #444;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    a {
-      color: #0056b3;
+    .nav-name {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+      color: var(--navy);
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
     }
 
+    .nav-links a {
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--navy); }
+
+    /* ── HERO ─────────────────────────────────────────────────────── */
+    .hero {
+      background: var(--navy);
+      min-height: 55vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 6rem 4rem 3rem;
+    }
+
+    .hero-inner { max-width: 860px; }
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(3.8rem, 8vw, 7.5rem);
+      line-height: 1;
+      color: var(--cream);
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+    }
+
+    .hero-tagline {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      color: rgba(248, 246, 241, 0.55);
+      max-width: 580px;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+    }
+
+    .hero-meta-item {
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      color: rgba(248, 246, 241, 0.45);
+    }
+
+    .hero-meta-item strong {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-meta a {
+      color: rgba(248, 246, 241, 0.45);
+      text-decoration: none;
+    }
+
+    .hero-meta a:hover { color: var(--cream); }
+
+    /* ── MAIN LAYOUT ──────────────────────────────────────────────── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 7rem 2rem 6rem;
+    }
+
+    /* ── SECTIONS ─────────────────────────────────────────────────── */
+    section { margin-bottom: 2.5rem; }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 2.4rem;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 2rem;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 1.2rem;
+      line-height: 1.55;
+    }
+
+    /* ── HORIZONTAL RULE ──────────────────────────────────────────── */
+    .rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin-bottom: 1rem;
+    }
+
+    /* ── INTEREST TAGS ────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      color: var(--navy);
+      border: 1px solid rgba(20, 40, 77, 0.25);
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+    }
+
+    /* ── ENTRIES (employment, education, grants) ─────────────────── */
+    .entry { display: flex; gap: 2.5rem; margin-bottom: 0.8rem; }
+
+    .entry-year {
+      flex-shrink: 0;
+      width: 110px;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      padding-top: 0.15rem;
+      line-height: 1.5;
+    }
+
+    .entry-body { flex: 1; }
+
+    .entry-body strong {
+      display: block;
+      font-weight: 500;
+      font-size: 1.15rem;
+      color: var(--ink);
+      margin-bottom: 0.15rem;
+    }
+
+    .entry-body span {
+      font-size: 1.08rem;
+      color: var(--muted);
+    }
+
+    /* ── PUBLICATIONS ─────────────────────────────────────────────── */
     .publication {
-      margin-bottom: 15px;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--rule);
     }
 
+    .publication:first-child { border-top: 1px solid var(--rule); }
+
+    .pub-authors {
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .pub-title {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 0.4rem;
+    }
+
+    .pub-venue {
+      font-size: 0.82rem;
+      color: var(--gold);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── SKILLS GRID ──────────────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .skill-cell {
+      background: var(--cream);
+      padding: 1.1rem 1.4rem;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    .skill-cell span {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────────────── */
     footer {
-      margin-top: 80px;
-      color: #777;
-      font-size: 0.9rem;
       text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── FADE-IN ──────────────────────────────────────────────────── */
+    .fade {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .fade.visible { opacity: 1; transform: none; }
+
+    /* ── MOBILE ───────────────────────────────────────────────────── */
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      main { padding: 5rem 1.5rem 4rem; }
+      .entry { flex-direction: column; gap: 0.3rem; }
+      .entry-year { width: auto; }
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>Soohyun Kwon</h1>
-
-    <div class="subtitle">
-      Assistant Professor, School of Global Communication<br>
-      Kyung Hee University
-    </div>
-
-    <div class="contact">
-      <strong>Email:</strong>
-      <a href="mailto:soohyunkwon@khu.ac.kr">
-        soohyunkwon@khu.ac.kr
-      </a>
-    </div>
-  </header>
-
-  <section class="section">
-    <h2>About</h2>
-
-    <p>
-      I am an assistant professor at Kyung Hee University specializing in
-      computational sociolinguistics, language variation and change,
-      sociophonetics, and corpus-based approaches to Korean linguistics.
-      My research combines quantitative analysis, AI-based methodologies,
-      articulatory phonetics, and large-scale linguistic data to investigate
-      sound change and variation in Korean and English.
-    </p>
-  </section>
-
-  <section class="section">
-    <h2>Research Interests</h2>
-
-    <ul>
-      <li>Computational sociolinguistics</li>
-      <li>Language variation and change</li>
-      <li>Corpus linguistics</li>
-      <li>Sociophonetics</li>
-      <li>Ultrasound phonetics</li>
-      <li>AI-based linguistic analysis</li>
-      <li>Korean phonology and phonetics</li>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-name">Soohyun Kwon</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-  </section>
+  </nav>
 
-  <section class="section">
-    <h2>Employment</h2>
-
-    <div class="item">
-      <div class="year">2025–Present</div>
-      Assistant Professor, School of Global Communication,
-      Kyung Hee University
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Linguist · Kyung Hee University</p>
+      <h1>Soohyun Kwon</h1>
+      <p class="hero-tagline">
+        Computational sociolinguistics, language variation and change,
+        and the acoustics of Korean speech.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <strong>Position</strong>
+          Assistant Professor, School of Global Communication
+        </div>
+        <div class="hero-meta-item">
+          <strong>Email</strong>
+          <a href="mailto:soohyunkwon@khu.ac.kr">soohyunkwon@khu.ac.kr</a>
+        </div>
+        <div class="hero-meta-item">
+          <strong>Education</strong>
+          PhD Linguistics, University of Pennsylvania
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="item">
-      <div class="year">2022–2025</div>
-      Research Professor, Institute of Humanities,
-      Seoul National University
-    </div>
+  <!-- MAIN CONTENT -->
+  <main>
 
-    <div class="item">
-      <div class="year">2019–Present</div>
-      Lecturer, Department of English Language and Literature,
-      Seoul National University
-    </div>
-  </section>
+    <!-- ABOUT -->
+    <section id="about" class="fade">
+      <p class="section-label">About</p>
+      <hr class="rule">
+      <p>
+        I am an assistant professor at Kyung Hee University specializing in
+        computational sociolinguistics, language variation and change,
+        sociophonetics, and corpus-based approaches to Korean linguistics.
+        My research combines quantitative analysis, AI-based methodologies,
+        articulatory phonetics, and large-scale linguistic data to investigate
+        sound change and variation in Korean and English.
+      </p>
+    </section>
 
-  <section class="section">
-    <h2>Education</h2>
+    <!-- RESEARCH INTERESTS -->
+    <section id="research" class="fade">
+      <p class="section-label">Research Interests</p>
+      <hr class="rule">
+      <div class="tags">
+        <span class="tag">Computational Sociolinguistics</span>
+        <span class="tag">Language Variation &amp; Change</span>
+        <span class="tag">Corpus Linguistics</span>
+        <span class="tag">Sociophonetics</span>
+        <span class="tag">Ultrasound Phonetics</span>
+        <span class="tag">AI-based Linguistic Analysis</span>
+        <span class="tag">Korean Phonology</span>
+        <span class="tag">Korean Phonetics</span>
+      </div>
+    </section>
 
-    <div class="item">
-      <div class="year">PhD, 2018</div>
-      Linguistics, University of Pennsylvania
-    </div>
+    <!-- EMPLOYMENT -->
+    <section class="fade">
+      <p class="section-label">Employment</p>
+      <hr class="rule">
 
-    <div class="item">
-      <div class="year">BA, 2010</div>
-      English Literature and Linguistics, Korea University
-    </div>
-  </section>
+      <div class="entry">
+        <div class="entry-year">2025 – Present</div>
+        <div class="entry-body">
+          <strong>Assistant Professor</strong>
+          <span>School of Global Communication, Kyung Hee University</span>
+        </div>
+      </div>
 
-  <section class="section">
-    <h2>Selected Publications</h2>
+      <div class="entry">
+        <div class="entry-year">2022 – 2025</div>
+        <div class="entry-body">
+          <strong>Research Professor</strong>
+          <span>Institute of Humanities, Seoul National University</span>
+        </div>
+      </div>
 
-    <div class="publication">
-      Kwon, Soohyun. 2023.
-      <em>The development of phonological patterns in urban dialect contact setting:
-      Evidence from Seoul Korean.</em>
-      Language 99(3): 531–562.
-    </div>
 
-    <div class="publication">
-      Kwon, Soohyun. 2024.
-      <em>Categorical and gradient effects in segmental deletion:
-      the case study of /w/-deletion in Seoul Korean.</em>
-      Linguistic Research 41(1): 169–189.
-    </div>
+    </section>
 
-    <div class="publication">
-      Kwon, Soohyun & Mira Oh. 2024.
-      <em>Preboundary lengthening of alveolar consonants:
-      Acoustic and articulatory evidence from Seoul Korean.</em>
-      Linguistic Research 41(2): 231–251.
-    </div>
+    <!-- EDUCATION -->
+    <section class="fade">
+      <p class="section-label">Education</p>
+      <hr class="rule">
 
-    <div class="publication">
-      Kwon, Soohyun. 2018.
-      <em>Phonetic and Phonological Changes of Noam Chomsky:
-      A Case Study of Dialect Shift.</em>
-      American Speech 93(2): 270–297.
-    </div>
-  </section>
+      <div class="entry">
+        <div class="entry-year">PhD</div>
+        <div class="entry-body">
+          <strong>Linguistics</strong>
+          <span>University of Pennsylvania</span>
+        </div>
+      </div>
 
-  <section class="section">
-    <h2>Grants and Awards</h2>
+      <div class="entry">
+        <div class="entry-year">BA</div>
+        <div class="entry-body">
+          <strong>English Literature and Linguistics</strong>
+          <span>Korea University</span>
+        </div>
+      </div>
+    </section>
 
-    <div class="item">
-      <div class="year">2022–2027</div>
-      National Research Foundation of Korea Research Grant
-      (200,000,000 KRW)
-    </div>
+    <!-- PUBLICATIONS -->
+    <section id="publications" class="fade">
+      <p class="section-label">Selected Publications</p>
+      <hr class="rule">
 
-    <div class="item">
-      <div class="year">2015–2018</div>
-      NSF Doctoral Dissertation Research Improvement Award
-    </div>
+      <div class="publication">
+        <p class="pub-authors">Kwon, Soohyun &amp; Mira Oh. 2024.</p>
+        <p class="pub-title">Preboundary lengthening of alveolar consonants: Acoustic and articulatory evidence from Seoul Korean.</p>
+        <p class="pub-venue">Linguistic Research 41(2): 231–251.</p>
+      </div>
 
-    <div class="item">
-      <div class="year">2010–2015</div>
-      Benjamin Franklin Fellowship,
-      University of Pennsylvania
-    </div>
+      <div class="publication">
+        <p class="pub-authors">Kwon, Soohyun. 2024.</p>
+        <p class="pub-title">Categorical and gradient effects in segmental deletion: the case study of /w/-deletion in Seoul Korean.</p>
+        <p class="pub-venue">Linguistic Research 41(1): 169–189.</p>
+      </div>
 
-    <div class="item">
-      <div class="year">2010–2012</div>
-      Fulbright Graduate Study Award
-    </div>
-  </section>
+      <div class="publication">
+        <p class="pub-authors">Kwon, Soohyun. 2023.</p>
+        <p class="pub-title">The development of phonological patterns in urban dialect contact setting: Evidence from Seoul Korean.</p>
+        <p class="pub-venue">Language 99(3): 531–562.</p>
+      </div>
 
-  <section class="section">
-    <h2>Teaching</h2>
+      <div class="publication">
+        <p class="pub-authors">Kwon, Soohyun. 2018.</p>
+        <p class="pub-title">Phonetic and Phonological Changes of Noam Chomsky: A Case Study of Dialect Shift.</p>
+        <p class="pub-venue">American Speech 93(2): 270–297.</p>
+      </div>
+    </section>
 
-    <ul>
-      <li>Language Variation and Change</li>
-      <li>Phonology</li>
-      <li>Sociolinguistics</li>
-      <li>Sociophonetics</li>
-      <li>Academic Writing</li>
-      <li>Introduction to Sociolinguistics</li>
-    </ul>
-  </section>
+    <!-- GRANTS -->
+    <section class="fade">
+      <p class="section-label">Grants &amp; Awards</p>
+      <hr class="rule">
 
-  <section class="section">
-    <h2>Programming & Technical Skills</h2>
+      <div class="entry">
+        <div class="entry-year">2022 – 2027</div>
+        <div class="entry-body">
+          <strong>National Research Foundation of Korea Research Grant</strong>
+          <span>200,000,000 KRW</span>
+        </div>
+      </div>
 
-    <ul>
-      <li>R</li>
-      <li>Python</li>
-      <li>HTML/CSS</li>
-      <li>LaTeX</li>
-      <li>Praat</li>
-    </ul>
-  </section>
+      <div class="entry">
+        <div class="entry-year">2015 – 2018</div>
+        <div class="entry-body">
+          <strong>NSF Doctoral Dissertation Research Improvement Award</strong>
+          <span>National Science Foundation</span>
+        </div>
+      </div>
 
-  <section class="section">
-    <h2>Languages</h2>
+      <div class="entry">
+        <div class="entry-year">2010 – 2015</div>
+        <div class="entry-body">
+          <strong>Benjamin Franklin Fellowship</strong>
+          <span>University of Pennsylvania</span>
+        </div>
+      </div>
 
-    <ul>
-      <li>Korean (Native)</li>
-      <li>English (Fluent)</li>
-      <li>Japanese (Intermediate)</li>
-    </ul>
-  </section>
+      <div class="entry">
+        <div class="entry-year">2010 – 2012</div>
+        <div class="entry-body">
+          <strong>Fulbright Graduate Study Award</strong>
+          <span>Korea-US Educational Commission</span>
+        </div>
+      </div>
+    </section>
 
-  <footer>
-    © 2026 Soohyun Kwon
-  </footer>
+    <!-- TEACHING -->
+    <section id="teaching" class="fade">
+      <p class="section-label">Teaching</p>
+      <hr class="rule">
+      <div class="tags">
+        <span class="tag">Language Variation and Change</span>
+        <span class="tag">Phonology</span>
+        <span class="tag">Sociolinguistics</span>
+        <span class="tag">Sociophonetics</span>
+        <span class="tag">Academic Writing</span>
+        <span class="tag">Introduction to Sociolinguistics</span>
+      </div>
+    </section>
+
+    <!-- SKILLS & LANGUAGES -->
+    <section class="fade">
+      <p class="section-label">Skills &amp; Languages</p>
+      <hr class="rule">
+      <div class="skills-grid">
+        <div class="skill-cell"><span>Programming</span>R · Python · HTML/CSS · LaTeX · Praat</div>
+        <div class="skill-cell"><span>Korean</span>Native</div>
+        <div class="skill-cell"><span>English</span>Fluent</div>
+        <div class="skill-cell"><span>Japanese</span>Intermediate</div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="fade">
+      <p class="section-label">Contact</p>
+      <hr class="rule">
+      <p>
+        I welcome inquiries from prospective collaborators, graduate students,
+        and anyone interested in my research.<br><br>
+        <a href="mailto:soohyunkwon@khu.ac.kr"
+           style="color: var(--navy); font-weight: 500; letter-spacing: 0.02em;">
+          soohyunkwon@khu.ac.kr
+        </a>
+      </p>
+    </section>
+
+  </main>
+
+  <footer>© 2026 Soohyun Kwon &nbsp;·&nbsp; Kyung Hee University</footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+  </script>
 
 </body>
 </html>
