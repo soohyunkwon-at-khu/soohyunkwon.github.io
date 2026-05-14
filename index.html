@@ -30,8 +30,8 @@
       font-weight: 300;
       background: var(--cream);
       color: var(--ink);
-      font-size: 19px;
-      line-height: 1.8;
+      font-size: 22px;
+      line-height: 1.5;
     }
 
     /* ── NAV ──────────────────────────────────────────────────────── */
@@ -40,7 +40,7 @@
       top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       padding: 1.1rem 4rem;
       background: rgba(248, 246, 241, 0.88);
@@ -51,7 +51,7 @@
     .nav-name {
       font-family: var(--serif);
       font-weight: 400;
-      font-size: 1.15rem;
+      font-size: 1.6rem;
       letter-spacing: 0.02em;
       color: var(--navy);
       text-decoration: none;
@@ -66,7 +66,7 @@
     .nav-links a {
       font-family: var(--sans);
       font-weight: 400;
-      font-size: 0.78rem;
+      font-size: 1.05rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
@@ -79,18 +79,18 @@
     /* ── HERO ─────────────────────────────────────────────────────── */
     .hero {
       background: var(--navy);
-      min-height: 100vh;
+      min-height: 55vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 8rem 4rem 5rem;
+      padding: 6rem 4rem 3rem;
     }
 
     .hero-inner { max-width: 860px; }
 
     .hero-eyebrow {
       font-family: var(--sans);
-      font-size: 0.72rem;
+      font-size: 1.1rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--gold);
@@ -110,7 +110,7 @@
     .hero-tagline {
       font-family: var(--serif);
       font-style: italic;
-      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
       color: rgba(248, 246, 241, 0.55);
       max-width: 580px;
       line-height: 1.6;
@@ -124,14 +124,14 @@
     }
 
     .hero-meta-item {
-      font-size: 0.8rem;
+      font-size: 1.1rem;
       letter-spacing: 0.06em;
       color: rgba(248, 246, 241, 0.45);
     }
 
     .hero-meta-item strong {
       display: block;
-      font-size: 0.7rem;
+      font-size: 0.95rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--gold);
@@ -154,15 +154,15 @@
     }
 
     /* ── SECTIONS ─────────────────────────────────────────────────── */
-    section { margin-bottom: 6rem; }
+    section { margin-bottom: 2.5rem; }
 
     .section-label {
       font-family: var(--sans);
-      font-size: 0.68rem;
+      font-size: 1.1rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 1.6rem;
+      margin-bottom: 0.6rem;
     }
 
     h2 {
@@ -176,15 +176,15 @@
 
     p {
       color: var(--muted);
-      font-size: 1.15rem;
-      line-height: 1.85;
+      font-size: 1.2rem;
+      line-height: 1.55;
     }
 
     /* ── HORIZONTAL RULE ──────────────────────────────────────────── */
     .rule {
       border: none;
       border-top: 1px solid var(--rule);
-      margin-bottom: 2.2rem;
+      margin-bottom: 1rem;
     }
 
     /* ── INTEREST TAGS ────────────────────────────────────────────── */
@@ -196,7 +196,7 @@
     }
 
     .tag {
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       letter-spacing: 0.04em;
       color: var(--navy);
       border: 1px solid rgba(20, 40, 77, 0.25);
@@ -205,7 +205,7 @@
     }
 
     /* ── ENTRIES (employment, education, grants) ─────────────────── */
-    .entry { display: flex; gap: 2.5rem; margin-bottom: 2rem; }
+    .entry { display: flex; gap: 2.5rem; margin-bottom: 0.8rem; }
 
     .entry-year {
       flex-shrink: 0;
@@ -222,19 +222,19 @@
     .entry-body strong {
       display: block;
       font-weight: 500;
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       color: var(--ink);
       margin-bottom: 0.15rem;
     }
 
     .entry-body span {
-      font-size: 0.98rem;
+      font-size: 1.08rem;
       color: var(--muted);
     }
 
     /* ── PUBLICATIONS ─────────────────────────────────────────────── */
     .publication {
-      padding: 1.6rem 0;
+      padding: 0.8rem 0;
       border-bottom: 1px solid var(--rule);
     }
 
@@ -250,7 +250,7 @@
     .pub-title {
       font-family: var(--serif);
       font-style: italic;
-      font-size: 1.35rem;
+      font-size: 1.5rem;
       color: var(--ink);
       line-height: 1.4;
       margin-bottom: 0.4rem;
@@ -322,7 +322,7 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-name">Soohyun Kwon</a>
+
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#research">Research</a></li>
@@ -335,8 +335,8 @@
   <!-- HERO -->
   <div class="hero">
     <div class="hero-inner">
-      <p class="hero-eyebrow"> Kyung Hee University</p>
-      <h1>Soohyun<br>Kwon</h1>
+      <p class="hero-eyebrow">Kyung Hee University</p>
+      <h1>Soohyun Kwon</h1>
       <p class="hero-tagline">
         Computational sociolinguistics, language variation and change,
         and the acoustics of Korean speech.
@@ -412,13 +412,7 @@
         </div>
       </div>
 
-      <div class="entry">
-        <div class="entry-year">2019 – Present</div>
-        <div class="entry-body">
-          <strong>Lecturer</strong>
-          <span>Department of English Language and Literature, Seoul National University</span>
-        </div>
-      </div>
+
     </section>
 
     <!-- EDUCATION -->
@@ -427,7 +421,7 @@
       <hr class="rule">
 
       <div class="entry">
-        <div class="entry-year">PhD, 2018</div>
+        <div class="entry-year">PhD</div>
         <div class="entry-body">
           <strong>Linguistics</strong>
           <span>University of Pennsylvania</span>
@@ -435,7 +429,7 @@
       </div>
 
       <div class="entry">
-        <div class="entry-year">BA, 2010</div>
+        <div class="entry-year">BA</div>
         <div class="entry-body">
           <strong>English Literature and Linguistics</strong>
           <span>Korea University</span>
