@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,8 +30,8 @@
       font-weight: 300;
       background: var(--cream);
       color: var(--ink);
-      font-size: 22px;
-      line-height: 1.5;
+      font-size: 19px;
+      line-height: 1.8;
     }
 
     /* ── NAV ──────────────────────────────────────────────────────── */
@@ -78,11 +79,11 @@
     /* ── HERO ─────────────────────────────────────────────────────── */
     .hero {
       background: var(--navy);
-      min-height: 55vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 6rem 4rem 3rem;
+      padding: 8rem 4rem 5rem;
     }
 
     .hero-inner { max-width: 860px; }
@@ -153,15 +154,15 @@
     }
 
     /* ── SECTIONS ─────────────────────────────────────────────────── */
-    section { margin-bottom: 2.5rem; }
+    section { margin-bottom: 6rem; }
 
     .section-label {
       font-family: var(--sans);
-      font-size: 1.1rem;
+      font-size: 0.68rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 0.6rem;
+      margin-bottom: 1.6rem;
     }
 
     h2 {
@@ -175,15 +176,15 @@
 
     p {
       color: var(--muted);
-      font-size: 1.2rem;
-      line-height: 1.55;
+      font-size: 1.15rem;
+      line-height: 1.85;
     }
 
     /* ── HORIZONTAL RULE ──────────────────────────────────────────── */
     .rule {
       border: none;
       border-top: 1px solid var(--rule);
-      margin-bottom: 1rem;
+      margin-bottom: 2.2rem;
     }
 
     /* ── INTEREST TAGS ────────────────────────────────────────────── */
@@ -195,7 +196,7 @@
     }
 
     .tag {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       letter-spacing: 0.04em;
       color: var(--navy);
       border: 1px solid rgba(20, 40, 77, 0.25);
@@ -204,7 +205,7 @@
     }
 
     /* ── ENTRIES (employment, education, grants) ─────────────────── */
-    .entry { display: flex; gap: 2.5rem; margin-bottom: 0.8rem; }
+    .entry { display: flex; gap: 2.5rem; margin-bottom: 2rem; }
 
     .entry-year {
       flex-shrink: 0;
@@ -221,19 +222,19 @@
     .entry-body strong {
       display: block;
       font-weight: 500;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       color: var(--ink);
       margin-bottom: 0.15rem;
     }
 
     .entry-body span {
-      font-size: 1.08rem;
+      font-size: 0.98rem;
       color: var(--muted);
     }
 
     /* ── PUBLICATIONS ─────────────────────────────────────────────── */
     .publication {
-      padding: 0.8rem 0;
+      padding: 1.6rem 0;
       border-bottom: 1px solid var(--rule);
     }
 
@@ -249,7 +250,7 @@
     .pub-title {
       font-family: var(--serif);
       font-style: italic;
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       color: var(--ink);
       line-height: 1.4;
       margin-bottom: 0.4rem;
@@ -335,7 +336,7 @@
   <div class="hero">
     <div class="hero-inner">
       <p class="hero-eyebrow">Linguist · Kyung Hee University</p>
-      <h1>Soohyun Kwon</h1>
+      <h1>Soohyun<br>Kwon</h1>
       <p class="hero-tagline">
         Computational sociolinguistics, language variation and change,
         and the acoustics of Korean speech.
@@ -411,7 +412,13 @@
         </div>
       </div>
 
-
+      <div class="entry">
+        <div class="entry-year">2019 – Present</div>
+        <div class="entry-body">
+          <strong>Lecturer</strong>
+          <span>Department of English Language and Literature, Seoul National University</span>
+        </div>
+      </div>
     </section>
 
     <!-- EDUCATION -->
@@ -420,7 +427,7 @@
       <hr class="rule">
 
       <div class="entry">
-        <div class="entry-year">PhD</div>
+        <div class="entry-year">PhD, 2018</div>
         <div class="entry-body">
           <strong>Linguistics</strong>
           <span>University of Pennsylvania</span>
@@ -428,7 +435,7 @@
       </div>
 
       <div class="entry">
-        <div class="entry-year">BA</div>
+        <div class="entry-year">BA, 2010</div>
         <div class="entry-body">
           <strong>English Literature and Linguistics</strong>
           <span>Korea University</span>
