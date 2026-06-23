@@ -1,546 +1,238 @@
-<!DOCTYPE html>
-<html lang="ko">
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>조별 활동 동료 평가</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&family=Montserrat:wght@500;600&display=swap" rel="stylesheet" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Soohyun Kwon — Linguist | Kyung Hee University</title>
+<meta name="description" content="Soohyun Kwon, Assistant Professor at Kyung Hee University. Computational sociolinguistics, language variation and change, and the acoustics of Korean and English speech." />
+<meta property="og:title" content="Soohyun Kwon — Linguist" />
+<meta property="og:description" content="Computational sociolinguistics, language variation and change, and the acoustics of Korean and English speech." />
+<meta property="og:type" content="profile" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --cream:oklch(0.972 0.008 85);
+    --ink:oklch(0.18 0.012 50);
+    --navy:oklch(0.28 0.07 265);
+    --gold:oklch(0.58 0.08 75);
+    --muted:oklch(0.5 0.012 50);
+    --rule:oklch(0.9 0.008 70);
+    --stone:oklch(0.82 0.018 75);
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Jost',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;border:0 solid var(--rule);}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.5;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
 
-  body {
-    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
-    background: #f4f6fa;
-    color: #1a1a2e;
-    min-height: 100vh;
-    padding: 2rem 1rem 4rem;
-  }
+  /* NAV */
+  nav.top{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:flex-end;align-items:center;padding:1rem 1.5rem;background:color-mix(in oklab,var(--cream) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);}
+  @media(min-width:768px){nav.top{padding:1rem 4rem;}}
+  nav.top ul{display:none;gap:2.5rem;}
+  @media(min-width:768px){nav.top ul{display:flex;}}
+  nav.top a.link{font-family:var(--sans);font-size:.875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color .2s;}
+  nav.top a.link:hover{color:var(--navy);}
 
-  .page-wrap {
-    max-width: 640px;
-    margin: 0 auto;
-  }
+  /* HERO */
+  header.hero{background:var(--stone);min-height:55vh;display:flex;flex-direction:column;justify-content:flex-end;padding:7rem 1.5rem 3rem;border-bottom:1px solid var(--rule);}
+  @media(min-width:768px){header.hero{padding:6rem 4rem 3rem;}}
+  .hero-inner{max-width:860px;}
+  .eyebrow{font-family:var(--sans);font-size:1rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.75rem;}
+  h1.name{font-family:var(--serif);font-weight:300;color:var(--navy);line-height:1;letter-spacing:-.01em;margin-bottom:2rem;font-size:clamp(3.5rem,8vw,7.5rem);}
+  p.tagline{font-family:var(--serif);font-style:italic;color:color-mix(in oklab,var(--ink) 65%,transparent);max-width:580px;line-height:1.6;margin-bottom:3rem;font-size:clamp(1.3rem,2.5vw,1.9rem);}
+  .meta{display:flex;flex-wrap:wrap;gap:2.5rem;}
+  .meta > div{font-size:1rem;color:color-mix(in oklab,var(--ink) 70%,transparent);letter-spacing:.06em;}
+  .meta strong{display:block;font-size:.875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:400;margin-bottom:.25rem;}
+  .meta a{color:color-mix(in oklab,var(--ink) 70%,transparent);}
+  .meta a:hover{color:var(--navy);}
 
-  /* Header */
-  .header {
-    background: #dbeafe;
-    border-radius: 12px 12px 0 0;
-    padding: 1.75rem 2rem 1.5rem;
-  }
-  .header-khu {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: #2563a8;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-  }
-  .header h1 {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1.3;
-    margin-bottom: 6px;
-    color: #1e3a5f;
-  }
-  .header p {
-    font-size: 13px;
-    color: #3b6ea8;
-    line-height: 1.6;
-  }
+  /* MAIN */
+  main{max-width:780px;margin:0 auto;padding:6rem 1.5rem;}
+  @media(min-width:768px){main{padding:6rem 2rem;}}
+  section{margin-bottom:2.5rem;opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease;}
+  section.visible{opacity:1;transform:none;}
+  .section-label{font-family:var(--sans);font-size:1rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.625rem;}
+  hr{border-top:1px solid var(--rule);margin-bottom:1rem;}
+  .prose{color:var(--muted);font-size:1.125rem;line-height:1.55;}
 
-  /* Body card */
-  .form-body {
-    background: #fff;
-    border-radius: 0 0 12px 12px;
-    padding: 1.75rem 2rem 2rem;
-    border: 1px solid #dde3ef;
-    border-top: none;
-  }
+  /* Tags */
+  .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem;}
+  .tag{font-size:1rem;letter-spacing:.025em;color:var(--navy);border:1px solid color-mix(in oklab,var(--navy) 25%,transparent);padding:.25rem .75rem;border-radius:2px;}
 
-  /* Meta section */
-  .meta-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 1.75rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #edf0f7;
-  }
-  @media (max-width: 480px) { .meta-row { grid-template-columns: 1fr; } }
+  /* Entry */
+  .entry{display:flex;flex-direction:column;gap:.25rem;margin-bottom:.75rem;}
+  @media(min-width:768px){.entry{flex-direction:row;gap:2.5rem;}}
+  .entry .year{flex-shrink:0;font-size:.75rem;letter-spacing:.025em;color:var(--gold);padding-top:.125rem;}
+  @media(min-width:768px){.entry .year{width:110px;}}
+  .entry .body strong{display:block;font-weight:500;font-size:1rem;color:var(--ink);margin-bottom:.125rem;}
+  .entry .body span{font-size:1rem;color:var(--muted);}
 
-  .field-group { display: flex; flex-direction: column; gap: 5px; }
-  .field-group label { font-size: 12px; font-weight: 500; color: #5a6580; }
-  .field-group input, .field-group textarea {
-    height: 38px;
-    padding: 0 12px;
-    border: 1px solid #dde3ef;
-    border-radius: 7px;
-    font-size: 14px;
-    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
-    color: #1a1a2e;
-    background: #f8f9fc;
-    transition: border-color 0.15s;
-  }
-  .field-group input:focus, .field-group textarea:focus {
-    outline: none;
-    border-color: #1a3a6b;
-    background: #fff;
-  }
+  /* Publications */
+  article.pub{padding:.75rem 0;border-bottom:1px solid var(--rule);}
+  article.pub.first{border-top:1px solid var(--rule);}
+  article.pub .authors{font-size:.75rem;letter-spacing:.025em;color:var(--muted);margin-bottom:.375rem;}
+  article.pub .title{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--ink);line-height:1.4;margin-bottom:.375rem;}
+  article.pub .venue{font-size:.75rem;color:var(--gold);letter-spacing:.025em;margin-bottom:.5rem;}
+  .pdf-toggle{background:none;cursor:pointer;font-family:var(--sans);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);border-bottom:1px solid color-mix(in oklab,var(--navy) 40%,transparent);padding:0 0 .15rem;transition:color .2s,border-color .2s;}
+  .pdf-toggle:hover{color:var(--gold);border-bottom-color:var(--gold);}
+  .pdf-frame{margin-top:1rem;border:1px solid var(--rule);border-radius:2px;overflow:hidden;background:var(--stone);}
+  .pdf-frame iframe{width:100%;height:600px;border:0;display:block;}
 
-  /* Section */
-  .section {
-    margin-bottom: 1.5rem;
-  }
-  .section-badge {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: #e8eef8;
-    color: #1a3a6b;
-    padding: 3px 9px;
-    border-radius: 20px;
-    margin-bottom: 6px;
-  }
-  .section-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: #1a1a2e;
-    margin-bottom: 4px;
-  }
-  .section-hint {
-    font-size: 12.5px;
-    color: #7a83a0;
-    line-height: 1.65;
-    margin-bottom: 1rem;
-  }
-  .section-hint strong { color: #1a3a6b; }
+  /* Skills row */
+  .skills{display:flex;flex-direction:column;gap:1.25rem;}
+  .skill-row{display:flex;flex-direction:column;gap:.25rem;}
+  @media(min-width:768px){.skill-row{flex-direction:row;gap:2.5rem;}}
+  .skill-row .label{flex-shrink:0;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding-top:.25rem;}
+  @media(min-width:768px){.skill-row .label{width:110px;}}
+  .skill-row .value{flex:1;font-size:1rem;color:var(--ink);}
 
-  /* Member rows */
-  .col-labels {
-    display: grid;
-    grid-template-columns: 1fr 88px;
-    gap: 8px;
-    margin-bottom: 4px;
-  }
-  .col-label {
-    font-size: 11px;
-    color: #9aa3bc;
-    padding: 0 4px;
-  }
-  .member-row {
-    display: grid;
-    grid-template-columns: 1fr 88px;
-    gap: 8px;
-    margin-bottom: 7px;
-  }
-  .member-row input[type="text"] {
-    height: 36px;
-    padding: 0 11px;
-    border: 1px solid #dde3ef;
-    border-radius: 7px;
-    font-size: 13.5px;
-    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
-    color: #1a1a2e;
-    background: #f8f9fc;
-    transition: border-color 0.15s;
-  }
-  .member-row input[type="number"] {
-    height: 36px;
-    padding: 0 8px;
-    border: 1px solid #dde3ef;
-    border-radius: 7px;
-    font-size: 14px;
-    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
-    color: #1a1a2e;
-    background: #f8f9fc;
-    text-align: center;
-    transition: border-color 0.15s;
-    -moz-appearance: textfield;
-  }
-  .member-row input[type="number"]::-webkit-inner-spin-button,
-  .member-row input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
-  .member-row input:focus {
-    outline: none;
-    border-color: #1a3a6b;
-    background: #fff;
-  }
+  /* Contact */
+  .contact-email{color:var(--navy);font-weight:500;letter-spacing:.025em;}
 
-  /* Total bar */
-  .total-wrap {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #edf0f7;
-  }
-  .total-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 6px;
-  }
-  .total-label { font-size: 12.5px; color: #7a83a0; }
-  .total-value { font-size: 14px; font-weight: 600; }
-  .t-ok  { color: #0f6e56; }
-  .t-warn { color: #b45309; }
-  .t-err  { color: #a32d2d; }
-  .progress-track {
-    height: 4px;
-    background: #edf0f7;
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    border-radius: 2px;
-    transition: width 0.2s ease, background 0.2s ease;
-  }
-
-  /* Divider */
-  .divider {
-    border: none;
-    border-top: 1px solid #edf0f7;
-    margin: 1.5rem 0;
-  }
-
-  /* Textarea */
-  .full-textarea {
-    width: 100%;
-    min-height: 110px;
-    padding: 11px 13px;
-    border: 1px solid #dde3ef;
-    border-radius: 7px;
-    font-size: 13.5px;
-    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
-    color: #1a1a2e;
-    background: #f8f9fc;
-    resize: vertical;
-    line-height: 1.7;
-    transition: border-color 0.15s;
-    margin-top: 0.75rem;
-  }
-  .full-textarea:focus {
-    outline: none;
-    border-color: #1a3a6b;
-    background: #fff;
-  }
-
-  /* Submit */
-  .submit-area { margin-top: 1.75rem; }
-  .btn-submit {
-    width: 100%;
-    height: 46px;
-    background: #1a3a6b;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
-    cursor: pointer;
-    transition: background 0.15s, transform 0.1s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  .btn-submit:hover { background: #14305a; }
-  .btn-submit:active { transform: scale(0.99); }
-  .btn-submit:disabled { background: #8fa8cc; cursor: not-allowed; }
-
-  /* Error msg */
-  .error-msg {
-    display: none;
-    background: #fef2f2;
-    border: 1px solid #fca5a5;
-    border-radius: 7px;
-    padding: 10px 14px;
-    font-size: 13px;
-    color: #991b1b;
-    margin-bottom: 12px;
-    line-height: 1.5;
-  }
-
-  /* Success screen */
-  .success-screen {
-    display: none;
-    text-align: center;
-    padding: 3rem 1.5rem;
-  }
-  .success-icon {
-    width: 60px; height: 60px;
-    background: #e1f5ee;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 1.25rem;
-    font-size: 28px;
-  }
-  .success-screen h2 { font-size: 18px; font-weight: 600; color: #1a1a2e; margin-bottom: 8px; }
-  .success-screen p { font-size: 13.5px; color: #7a83a0; line-height: 1.7; }
-  .btn-again {
-    margin-top: 1.5rem;
-    height: 40px;
-    padding: 0 24px;
-    background: transparent;
-    border: 1px solid #1a3a6b;
-    border-radius: 7px;
-    color: #1a3a6b;
-    font-size: 14px;
-    font-weight: 500;
-    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
-    cursor: pointer;
-  }
-  .btn-again:hover { background: #f0f4fb; }
-
-  /* Spinner */
-  .spinner {
-    width: 18px; height: 18px;
-    border: 2px solid rgba(255,255,255,0.4);
-    border-top-color: #fff;
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    display: none;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
+  footer{text-align:center;padding:3rem 1.5rem;border-top:1px solid var(--rule);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
 </style>
 </head>
 <body>
-<div class="page-wrap">
-  <div class="header">
-    <div class="header-khu">Digital Collaboration and Communication</div>
-    <h1>조별 활동 동료 평가</h1>
-    <p>본인을 포함한 조원 기여도를 평가하고 제출해 주세요.</p>
-  </div>
+<nav class="top">
+  <ul>
+    <li><a class="link" href="#about">About</a></li>
+    <li><a class="link" href="#research">Research</a></li>
+    <li><a class="link" href="#publications">Publications</a></li>
+    <li><a class="link" href="#teaching">Teaching</a></li>
+    <li><a class="link" href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <div class="form-body">
-    <!-- Success screen (hidden initially) -->
-    <div class="success-screen" id="success-screen">
-      <div class="success-icon">✓</div>
-      <h2>제출 완료!</h2>
-      <p>평가가 성공적으로 제출되었습니다.<br>교수자가 내용을 확인합니다.</p>
-      <button class="btn-again" onclick="resetForm()">다시 제출하기</button>
-    </div>
-
-    <!-- Form (shown initially) -->
-    <div id="main-form">
-      <!-- Meta -->
-      <div class="meta-row">
-        <div class="field-group">
-          <label>평가자 이름 (본인) *</label>
-          <input type="text" id="meta-name" placeholder="홍길동" />
-        </div>
-        <div class="field-group">
-          <label>조 번호 / 이름 *</label>
-          <input type="text" id="meta-group" placeholder="예: 3조, 팀A" />
-        </div>
-      </div>
-
-      <!-- Q1: Mid-term -->
-      <div class="section">
-        <span class="section-badge">문항 1</span>
-        <div class="section-title">중간발표 기여도 평가</div>
-        <div class="section-hint">중간발표를 준비하는 데 있어서 본인을 포함한 모든 조원의 기여도를 평가해 주세요.<br><strong>모든 조원의 기여도를 합하면 100이 되어야 합니다.</strong><br>예: 춘식이 30, 라이언 30, 어피치 30, 프로도 10</div>
-        <div class="col-labels">
-          <span class="col-label">이름</span>
-          <span class="col-label" style="text-align:center">기여도</span>
-        </div>
-        <div id="mid-rows"></div>
-        <div class="total-wrap">
-          <div class="total-row">
-            <span class="total-label">합계</span>
-            <span class="total-value t-warn" id="mid-total">0 / 100</span>
-          </div>
-          <div class="progress-track">
-            <div class="progress-fill" id="mid-bar" style="width:0%;background:#b45309"></div>
-          </div>
-        </div>
-      </div>
-
-      <hr class="divider" />
-
-      <!-- Q2: Final -->
-      <div class="section">
-        <span class="section-badge">문항 2</span>
-        <div class="section-title">기말발표 기여도 평가</div>
-        <div class="section-hint">기말발표를 준비하는 데 있어서 본인을 포함한 모든 조원의 기여도를 평가해 주세요.<br><strong>모든 조원의 기여도를 합하면 100이 되어야 합니다.</strong><br>예: 춘식이 30, 라이언 30, 어피치 30, 프로도 10</div>
-        <div class="col-labels">
-          <span class="col-label">이름</span>
-          <span class="col-label" style="text-align:center">기여도</span>
-        </div>
-        <div id="final-rows"></div>
-        <div class="total-wrap">
-          <div class="total-row">
-            <span class="total-label">합계</span>
-            <span class="total-value t-warn" id="final-total">0 / 100</span>
-          </div>
-          <div class="progress-track">
-            <div class="progress-fill" id="final-bar" style="width:0%;background:#b45309"></div>
-          </div>
-        </div>
-      </div>
-
-      <hr class="divider" />
-
-      <!-- Q3: Comments -->
-      <div class="section">
-        <span class="section-badge">문항 3</span>
-        <div class="section-title">기타 의견</div>
-        <div class="section-hint">이외에도 조별 활동에 대해서 교수자가 평가에 반영했으면 하는 사항이 있다면 자유롭게 작성해 주세요.</div>
-        <textarea class="full-textarea" id="comments" placeholder="자유롭게 작성해 주세요..."></textarea>
-      </div>
-
-      <!-- Error -->
-      <div class="error-msg" id="error-msg"></div>
-
-      <!-- Submit -->
-      <div class="submit-area">
-        <button class="btn-submit" id="btn-submit" onclick="submitForm()">
-          <span id="btn-label">제출하기</span>
-          <div class="spinner" id="spinner"></div>
-        </button>
-      </div>
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Linguist · Kyung Hee University</p>
+    <h1 class="name">Soohyun Kwon</h1>
+    <p class="tagline">Computational sociolinguistics, language variation and change, and the acoustics of Korean and English speech.</p>
+    <div class="meta">
+      <div><strong>Position</strong>Assistant Professor, School of Global Communication</div>
+      <div><strong>Email</strong><a href="mailto:soohyunkwon@khu.ac.kr">soohyunkwon@khu.ac.kr</a></div>
+      <div><strong>Education</strong>PhD Linguistics, University of Pennsylvania</div>
     </div>
   </div>
-</div>
+</header>
+
+<main>
+  <section id="about" class="fade">
+    <p class="section-label">About</p><hr>
+    <p class="prose">I am an assistant professor at Kyung Hee University specializing in computational sociolinguistics, language variation and change, sociophonetics, and corpus-based approaches to Korean linguistics. My research combines quantitative analysis, AI-based methodologies, articulatory phonetics, and large-scale linguistic data to investigate sound change and variation in Korean and English.</p>
+  </section>
+
+  <section id="research" class="fade">
+    <p class="section-label">Research Interests</p><hr>
+    <div class="tags">
+      <span class="tag">Computational Sociolinguistics</span>
+      <span class="tag">Language Variation &amp; Change</span>
+      <span class="tag">Corpus Linguistics</span>
+      <span class="tag">Sociophonetics</span>
+      <span class="tag">Ultrasound Phonetics</span>
+      <span class="tag">AI-based Linguistic Analysis</span>
+      <span class="tag">Korean Phonology</span>
+      <span class="tag">Korean Phonetics</span>
+    </div>
+  </section>
+
+  <section class="fade">
+    <p class="section-label">Employment</p><hr>
+    <div class="entry"><div class="year">2025 – Present</div><div class="body"><strong>Assistant Professor</strong><span>School of Global Communication, Kyung Hee University</span></div></div>
+    <div class="entry"><div class="year">2022 – 2025</div><div class="body"><strong>Research Professor</strong><span>Institute of Humanities, Seoul National University</span></div></div>
+  </section>
+
+  <section class="fade">
+    <p class="section-label">Education</p><hr>
+    <div class="entry"><div class="year">PhD</div><div class="body"><strong>Linguistics</strong><span>University of Pennsylvania</span></div></div>
+    <div class="entry"><div class="year">BA</div><div class="body"><strong>English Literature and Linguistics</strong><span>Korea University</span></div></div>
+  </section>
+
+  <section id="publications" class="fade">
+    <p class="section-label">Selected Publications</p><hr>
+    <article class="pub first">
+      <p class="authors">Kwon, Soohyun &amp; Mira Oh. 2024.</p>
+      <p class="title">Preboundary lengthening of alveolar consonants: Acoustic and articulatory evidence from Seoul Korean.</p>
+      <p class="venue">Linguistic Research 41(2): 231–251.</p>
+      <button type="button" class="pdf-toggle" data-pdf="1mcRR2x8BwW-D37wjAGuj-WWp6kq0e2EH" aria-expanded="false">View PDF</button>
+      <div class="pdf-frame" hidden></div>
+    </article>
+    <article class="pub">
+      <p class="authors">Kwon, Soohyun. 2024.</p>
+      <p class="title">Categorical and gradient effects in segmental deletion: the case study of /w/-deletion in Seoul Korean.</p>
+      <p class="venue">Linguistic Research 41(1): 169–189.</p>
+      <button type="button" class="pdf-toggle" data-pdf="1t-IFsg6cWXTH8YVT5xVxsk0ENUEu8sE5" aria-expanded="false">View PDF</button>
+      <div class="pdf-frame" hidden></div>
+    </article>
+    <article class="pub">
+      <p class="authors">Kwon, Soohyun. 2023.</p>
+      <p class="title">The development of phonological patterns in urban dialect contact setting: Evidence from Seoul Korean.</p>
+      <p class="venue">Language 99(3): 531–562.</p>
+      <button type="button" class="pdf-toggle" data-pdf="1LDQ3lGbCfJavRKcuzr7E-0Xor81COXEi" aria-expanded="false">View PDF</button>
+      <div class="pdf-frame" hidden></div>
+    </article>
+    <article class="pub">
+      <p class="authors">Kwon, Soohyun. 2018.</p>
+      <p class="title">Phonetic and Phonological Changes of Noam Chomsky: A Case Study of Dialect Shift.</p>
+      <p class="venue">American Speech 93(2): 270–297.</p>
+      <button type="button" class="pdf-toggle" data-pdf="1EekVvDCtUN9klYINqTQgVwFZ07ry4nV2" aria-expanded="false">View PDF</button>
+      <div class="pdf-frame" hidden></div>
+    </article>
+  </section>
+
+  <section class="fade">
+    <p class="section-label">Grants &amp; Awards</p><hr>
+    <div class="entry"><div class="year">2022 – 2027</div><div class="body"><strong>National Research Foundation of Korea Research Grant</strong><span>200,000,000 KRW</span></div></div>
+    <div class="entry"><div class="year">2015 – 2018</div><div class="body"><strong>NSF Doctoral Dissertation Research Improvement Award</strong><span>National Science Foundation</span></div></div>
+    <div class="entry"><div class="year">2010 – 2015</div><div class="body"><strong>Benjamin Franklin Fellowship</strong><span>University of Pennsylvania</span></div></div>
+    <div class="entry"><div class="year">2010 – 2012</div><div class="body"><strong>Fulbright Graduate Study Award</strong><span>Korea-US Educational Commission</span></div></div>
+  </section>
+
+  <section id="teaching" class="fade">
+    <p class="section-label">Teaching</p><hr>
+    <div class="tags">
+      <span class="tag">Language Variation and Change</span>
+      <span class="tag">Phonology</span>
+      <span class="tag">Sociolinguistics</span>
+      <span class="tag">Sociophonetics</span>
+      <span class="tag">Academic Writing</span>
+      <span class="tag">Introduction to Sociolinguistics</span>
+    </div>
+  </section>
+
+  <section class="fade">
+    <p class="section-label">Skills &amp; Languages</p><hr>
+    <div class="skills">
+      <div class="skill-row"><div class="label">Programming</div><div class="value">R · Python · HTML/CSS · LaTeX · Praat</div></div>
+      <div class="skill-row"><div class="label">Korean</div><div class="value">Native</div></div>
+      <div class="skill-row"><div class="label">English</div><div class="value">Fluent</div></div>
+      <div class="skill-row"><div class="label">Japanese</div><div class="value">Intermediate</div></div>
+    </div>
+  </section>
+
+  <section id="contact" class="fade">
+    <p class="section-label">Contact</p><hr>
+    <p class="prose">I welcome inquiries from prospective collaborators, graduate students, and anyone interested in my research.<br><br><a class="contact-email" href="mailto:soohyunkwon@khu.ac.kr">soohyunkwon@khu.ac.kr</a></p>
+  </section>
+</main>
+
+<footer>© 2026 Soohyun Kwon · Kyung Hee University</footer>
 
 <script>
-const SUPABASE_URL = 'https://kwukcizewbhlxowkoilm.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_a3yBI7zIFulNSLhvWsWsOg_BMLAEkbd';
-const MAX_MEMBERS = 6;
-
-function buildRows(containerId, prefix) {
-  const c = document.getElementById(containerId);
-  for (let i = 0; i < MAX_MEMBERS; i++) {
-    const row = document.createElement('div');
-    row.className = 'member-row';
-    row.innerHTML =
-      `<input type="text" id="${prefix}-name-${i}" placeholder="조원 ${i+1} 이름" />` +
-      `<input type="number" id="${prefix}-score-${i}" placeholder="0" min="0" max="100" step="1" oninput="updateTotal('${prefix}')" />`;
-    c.appendChild(row);
-  }
-}
-
-function updateTotal(prefix) {
-  let sum = 0;
-  for (let i = 0; i < MAX_MEMBERS; i++) {
-    sum += parseFloat(document.getElementById(`${prefix}-score-${i}`).value) || 0;
-  }
-  sum = Math.round(sum);
-  const el = document.getElementById(`${prefix}-total`);
-  const bar = document.getElementById(`${prefix}-bar`);
-  el.textContent = `${sum} / 100`;
-  el.className = 'total-value ' + (sum === 100 ? 't-ok' : sum > 100 ? 't-err' : 't-warn');
-  bar.style.width = Math.min(sum, 100) + '%';
-  bar.style.background = sum === 100 ? '#0f6e56' : sum > 100 ? '#a32d2d' : '#b45309';
-}
-
-function getContributions(prefix) {
-  const result = [];
-  for (let i = 0; i < MAX_MEMBERS; i++) {
-    const name = (document.getElementById(`${prefix}-name-${i}`).value || '').trim();
-    const score = document.getElementById(`${prefix}-score-${i}`).value;
-    if (name || score) {
-      result.push({ name: name || `조원${i+1}`, score: parseFloat(score) || 0 });
-    }
-  }
-  return result;
-}
-
-function showError(msg) {
-  const el = document.getElementById('error-msg');
-  el.textContent = msg;
-  el.style.display = 'block';
-  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-function hideError() {
-  document.getElementById('error-msg').style.display = 'none';
-}
-
-async function submitForm() {
-  hideError();
-  const name = document.getElementById('meta-name').value.trim();
-  const group = document.getElementById('meta-group').value.trim();
-
-  if (!name) { showError('평가자 이름을 입력해 주세요.'); return; }
-  if (!group) { showError('조 번호 또는 이름을 입력해 주세요.'); return; }
-
-  const mid = getContributions('mid');
-  const fin = getContributions('final');
-
-  if (mid.length === 0) { showError('문항 1: 최소 한 명의 조원 이름과 기여도를 입력해 주세요.'); return; }
-  if (fin.length === 0) { showError('문항 2: 최소 한 명의 조원 이름과 기여도를 입력해 주세요.'); return; }
-
-  const midSum = Math.round(mid.reduce((a, m) => a + m.score, 0));
-  const finSum = Math.round(fin.reduce((a, m) => a + m.score, 0));
-
-  if (midSum !== 100) { showError(`문항 1 기여도 합계가 ${midSum}입니다. 합계가 정확히 100이 되어야 합니다.`); return; }
-  if (finSum !== 100) { showError(`문항 2 기여도 합계가 ${finSum}입니다. 합계가 정확히 100이 되어야 합니다.`); return; }
-
-  const btn = document.getElementById('btn-submit');
-  const label = document.getElementById('btn-label');
-  const spinner = document.getElementById('spinner');
-  btn.disabled = true;
-  label.textContent = '제출 중...';
-  spinner.style.display = 'block';
-
-  try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/peer_evaluations`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': SUPABASE_KEY,
-        'Authorization': `Bearer ${SUPABASE_KEY}`,
-        'Prefer': 'return=minimal'
-      },
-      body: JSON.stringify({
-        evaluator_name: name,
-        group_name: group,
-        mid_contributions: mid,
-        final_contributions: fin,
-        comments: document.getElementById('comments').value.trim() || null
-      })
+  const obs = new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
+  document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+  document.querySelectorAll('.pdf-toggle').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const frame=btn.nextElementSibling;
+      const open=btn.getAttribute('aria-expanded')==='true';
+      if(open){frame.hidden=true;frame.innerHTML='';btn.setAttribute('aria-expanded','false');btn.textContent='View PDF';}
+      else{frame.innerHTML=`<iframe src="https://drive.google.com/file/d/${btn.dataset.pdf}/preview" title="PDF" allow="autoplay"></iframe>`;frame.hidden=false;btn.setAttribute('aria-expanded','true');btn.textContent='Hide PDF';}
     });
-
-    if (!res.ok) {
-      const err = await res.text();
-      throw new Error(err);
-    }
-
-    document.getElementById('main-form').style.display = 'none';
-    document.getElementById('success-screen').style.display = 'block';
-  } catch (e) {
-    showError('제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요. (' + e.message + ')');
-    btn.disabled = false;
-    label.textContent = '제출하기';
-    spinner.style.display = 'none';
-  }
-}
-
-function resetForm() {
-  document.getElementById('meta-name').value = '';
-  document.getElementById('meta-group').value = '';
-  document.getElementById('comments').value = '';
-  for (let i = 0; i < MAX_MEMBERS; i++) {
-    document.getElementById(`mid-name-${i}`).value = '';
-    document.getElementById(`mid-score-${i}`).value = '';
-    document.getElementById(`final-name-${i}`).value = '';
-    document.getElementById(`final-score-${i}`).value = '';
-  }
-  updateTotal('mid');
-  updateTotal('final');
-  document.getElementById('success-screen').style.display = 'none';
-  document.getElementById('main-form').style.display = 'block';
-  const btn = document.getElementById('btn-submit');
-  btn.disabled = false;
-  document.getElementById('btn-label').textContent = '제출하기';
-  document.getElementById('spinner').style.display = 'none';
-  hideError();
-}
-
-buildRows('mid-rows', 'mid');
-buildRows('final-rows', 'final');
+  });
 </script>
 </body>
 </html>
